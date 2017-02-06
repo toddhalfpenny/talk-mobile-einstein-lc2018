@@ -1,0 +1,110 @@
+/**
+ * London's Calling 2017 theme for reveal.js.
+ *
+ * By Todd Halfpenny, http://toddhalfpenny.com
+ */
+
+
+$darkest-colour: darken(#135667, 10%); /* taken from darkest pyramid */
+$some-darkish-color: #0f696e; /* taken from a slightly dark pyramid */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #fff;
+
+$mainColor: $darkest-colour;
+$headingColor: $darkest-colour;
+
+$mainFontSize: 42px;
+$mainFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: uppercase;
+$headingFontWeight: 600;
+$linkColor: #166987;
+$linkColorHover: lighten( $linkColor, 15% );
+$selectionBackgroundColor: lighten( $linkColor, 25% );
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+section.has-dark-background {
+	&, h1, h2, h3, h4, h5, h6 {
+		color: #fff;
+	}
+}
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+
+.reveal {
+  background: white url(/lib/img/lc2017/basic-footer.png) no-repeat bottom;
+  background-size: contain;
+}
+
+#full-banner {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: white url(/lib/img/lc2017/full-banner.png) no-repeat;
+  background-size: 100%;
+  min-height: 23%;
+}
+
+.intro h1, .tagline {
+	text-align: left;
+}
+
+.intro h1 {
+	font-size: 1em;
+	border-bottom: 2px solid $some-darkish-color;
+	padding-bottom: 0.2em;
+}
+
+.tagline {
+	color: $some-darkish-color;
+}
+
+#speaker-details {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 2.6em;
+  border-radius: 0.5em;
+  padding: 0.1em 0.5em;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+#speaker-details p {
+   font-size: 0.5em;
+   line-height: 1.35em;
+   text-align: left;
+   margin: 0;
+}
+
+.thankyou h1 {
+	font-size: 1em;
+	border-bottom: 2px solid $some-darkish-color;
+	padding-bottom: 0.4em;
+}
+
+.thankyou .tagline {
+	font-size: 0.7em;
+	color: $some-darkish-color;
+}

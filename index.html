@@ -4,10 +4,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>London's Calling 2017</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/lc2017.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -24,8 +24,40 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
+				<!-- Title Slide -->
+				<section class="intro">
+					<div id="full-banner"></div>
+					<h1>Browser Dev Tool Debugging like a Unicorn-Ninja-Cat-Rockstar</h1>
+					<p class="tagline">Making the most of the browser dev tools</p>
+					<div id="speaker-details">
+						<p>Todd Halfpenny</p>
+						<p>Mobile Techinical Architect, MobileCaddy</p>
+						<p>todd@mobilecaddy.net</p>
+						<p><a href="https://twitter.com/toddhalfpenny">@toddhalfpenny</a></p>
+					</div>
+				</section>
+
+				<!-- A normal slide -->
 				<section>Slide 2</section>
+
+				<!-- Q&A Slide -->
+				<section class="qanda">
+					<div id="full-banner"></div>
+					<h1>Q &amp; A</h1>
+				</section>
+
+				<!-- Thank you Slide -->
+				<section class="thankyou">
+					<div id="full-banner"></div>
+					<h1>Thank You</h1>
+					<p class="tagline">Remember to tell us what you think in the event survey<br/>www.LondonsCalling.net/survey</p>
+					<div id="speaker-details">
+						<p>Todd Halfpenny</p>
+						<p>Mobile Techinical Architect, MobileCaddy</p>
+						<p>todd@mobilecaddy.net</p>
+						<p><a href="https://twitter.com/toddhalfpenny">@toddhalfpenny</a></p>
+					</div>
+				</section>
 			</div>
 		</div>
 
@@ -36,13 +68,15 @@
 			// More info https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				history: true,
-
+				controls: false,
+				transition: 'fade',
+				transitionSpeed: 'fast',
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 				]
 			});
 		</script>
