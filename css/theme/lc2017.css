@@ -303,7 +303,7 @@ body {
   width: 100%;
   background: white url(/lib/img/lc2017/full-banner.png) no-repeat;
   background-size: 100%;
-  min-height: 27%; }
+  min-height: 23%; }
 
 .intro h1, .tagline {
   text-align: left; }
@@ -339,3 +339,21 @@ body {
 .thankyou .tagline {
   font-size: 0.7em;
   color: #0f696e; }
+
+/* MY TALK */
+.tune .tagline {
+  font-size: 0.6em; }
+
+.reveal .std {
+  margin-top: -1em; }
+
+.std h1 {
+  font-size: 1.5em;
+  position: fixed;
+  top: 0.5em;
+  text-align: center;
+  width: 100%; }
+
+/*li.fragment  {
+  list-style: none;
+}*/
