@@ -354,6 +354,32 @@ body {
   text-align: center;
   width: 100%; }
 
+h1.camel {
+  text-transform: none; }
+
 /*li.fragment  {
   list-style: none;
 }*/
+.references li {
+  font-size: 0.8em; }
+
+span.url-text {
+  font-size: 0.7em;
+  margin: -0.3em 0 0.8em 0;
+  display: block;
+  color: #15949b; }
+
+video {
+  position: relative;
+  top: -1em; }
+
+p.credit {
+  position: fixed;
+  bottom: 10px; }
+
+.reveal pre {
+  width: 100%; }
+
+.Javascript em {
+  border: 4px solid cyan;
+  border-radius: 10px; }

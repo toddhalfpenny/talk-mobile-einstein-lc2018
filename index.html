@@ -50,7 +50,7 @@
 						<li class="fragment">Einstein Vision API to classify skin conditions</li>
 						<li class="fragment">Integration code on Salesforce.com</li>
 						<li class="fragment">Build a custom offline-enabled mobile app</li>
-						<li class="fragment">Demo throughout (with help from my buddy)</li>
+						<li class="fragment">Demo throughout</li>
 						<li class="fragment">Where next?</li>
 					</ul>
 				</section>
@@ -60,35 +60,76 @@
 				<section class="std"><h1>Einstein - Access and DataSets</h1>
 					<ul>
 						<li class="fragment">Create an account &amp; link to our dev org</li>
-						<li class="fragment">The (excellent) Einstein Playgound (demo)</li>
-						<li class="fragment">MY TRAINING KEP FAILING (GIF)</li>
 					</ul>
 				</section>
+				<section data-background-image="lib/img/lc2018/einstein-signup.png" data-background-size="70%"></section>
+				<section class="std"><h1>Einstein - Access and DataSets</h1>
+					<ul>
+						<li>Create an account &amp; link to our dev org</li>
+						<li>Install the (excellent) Einstein Playgound (demo)</li>
+						<li>Create our dataset</li>
+					</ul>
+				</section>
+				<section >
+					<video class="stretch" controls id="einstein-model">
+				    <source data-src="lib/vid/einstein-model-2018-02-02_11.40.57.mp4" type="video/mp4" />
+				  </video>
+				</section>
+
+				<section data-background-image="lib/img/lc2018/einstein-training-failure.gif" data-background-size="60%"><p class="credit">Image: giphy.com</section>
 
 
 				<!-- Einstein Training -->
-				<section class="std"><h1>Einstein - Training Models</h1>
-					<p class="fragment">Used curl (example)</li>
+				<section class="std"><h1>Training Einstein Models</h1>
+					<p>&nbsp;</li>
 					</p>
-					<h2 class="fragment">Why? (GIF of it running)</h2>
+					<pre class="fragment"><code class="Bash" data-noescape>
+curl -X GET -H "Authorization: Bearer &lt;TOKEN>" \
+  -H "Cache-Control: no-cache" \
+  https://api.einstein.ai/v2/vision/train/&lt;MODEL>
+					</code></pre>
+					<pre  class="fragment"><code class="JSON">{
+   ...
+  "status": "FAILED",
+  "progress": 0.01,
+  ...
+  "failureMsg": "To train a dataset and create
+                a model, the dataset must contain
+                atleast 40 examples.",
+  ...
+}</code></pre>
+				</section>
+				<section class="std">
+					<h1>Gotchas</h1>
 					<ul>
 						<li class="fragment">Min 40 examples in total</li>
 						<li class="fragment">Min 10 examples per label</li>
-						<li class="fragment">Max 2000px height/width</li>
+						<li class="fragment">Max 2000px x 2000px</li>
 					</ul>
-					<h2 class="fragment">NOT DOCUMENTED</h2>
+					<p>&nbsp;</p>
+					<h2 class="fragment">😠 NOT DOCUMENTED 😠</h2>
 				</section>
 
 
 				<!-- Einstein Platform Demo -->
-				<section class="std"><h1>Einstein - Demo</h1>
-					<p>Demo Vid</p>
+				<section data-background-video="lib/vid/einstein-platform-prediction.mp4">
+					<!--<video class="stretch" autoplay controls id="einstein-platform-prediction">
+				    <source data-src="lib/vid/einstein-platform-prediction.mp4" type="video/mp4" />
+				  </video>-->
 				</section>
-
 
 				<!-- Einstein REST -->
 				<section class="std"><h1>Einstein needs a REST</h1>
-					<p>Demo Vid</p>
+					<ul>
+						<li class="fragment">Expose to our app, when it's online</li>
+						<li class="fragment">Re-use the existing oAuth flows</li>
+					</ul>
+				</section>
+
+				<section data-background-video="lib/vid/einstein-rest-class.mp4">
+					<!--<video class="stretch" autoplay controls id="einstein-rest-class">
+				    <source data-src="lib/vid/einstein-rest-class.mp4" type="video/mp4" />
+				  </video>-->
 				</section>
 
 
@@ -103,16 +144,147 @@
 				</section>
 
 
-				<!-- Coding our app -->
+				<!-- MobileCaddy Vid -->
+				<section class="std"><h1>Defining our application</h1>
+					<p>Demo Vid</p>
+				</section>
+
+
+				<!-- Creating our project -->
 				<section class="std"><h1>Code, glorious code</h1>
 					<ul>
 						<li class="fragment">MobileCaddy Starter Apps</li>
-						<li class="fragment">Encrypted Offline-first approach</li>
-						<li class="fragment">List our <em>Accounts</em> and <em>Contacts</em></li>
-						<li class="fragment">Photo Capture</li>
-						<li class="fragment">Online Enistein Interaction</li>
-						<li class="fragment">DEMO</li>
 					</ul>
+					<div class="fragment"><pre><code  class="Bash" data-noescape>
+:$ mobilecaddy new ionic-shell myApp
+					</code></pre></div>
+					<ul>
+						<li class="fragment">Encrypted Offline-first approach</li>
+					</ul>
+				</section>
+
+
+				<!-- Reading records -->
+				<section class="std"><h1>List our <em>Accounts</em> and <em>Contacts</em></h1>
+					<div class="fragment"><pre><code  class="Javascript" data-noescape>
+  devUtils.readRecords('Account__ap', [])
+    .then(function(result) {
+    ...
+  }
+
+  // OR
+
+  let soql = "SELECT * from {Account__ap}
+              WHERE {Account__ap:Id} = '" + id + "'";
+  devUtils.smartSql(soql)
+    .then( function(result) {
+    ...
+  }
+					</code></pre></div>
+				</section>
+
+				<!-- Photo Capture -->
+				<section class="std"><h1>Photo Capture</h1>
+					<div class="fragment"><pre><code  class="Javascript" data-noescape>
+  <em>navigator.camera.getPicture(</em>
+    function(base64) {
+      // Woohoo, we have an image
+    },
+    function(err) {...},
+    {
+    quality         : 50,
+    targetWidth     : 480,
+    targetHeight    : 480,
+    encodingType    : navigator.camera.EncodingType.JPEG,
+    destinationType : navigator.camera.DestinationType.DATA_URL
+  });
+					</code></pre></div>
+				</section>
+				<section class="std"><h1>Photo Capture</h1>
+					<div><pre><code  class="Javascript" data-noescape>
+  navigator.camera.getPicture(
+    function(base64) {
+      // Woohoo, we have an image
+    },
+    function(err) {...},
+    {
+    quality         : 50,
+    <em>targetWidth     : 480,</em>
+    targetHeight    : 480,
+    encodingType    : navigator.camera.EncodingType.JPEG,
+    destinationType : navigator.camera.DestinationType.DATA_URL
+  });
+					</code></pre></div>
+				</section>
+				<section class="std"><h1>Photo Capture</h1>
+					<div><pre><code  class="Javascript" data-noescape>
+  navigator.camera.getPicture(
+    function(<em>base64</em>) {
+      // Woohoo, we have an image
+    },
+    function(err) {...},
+    {
+    quality         : 50,
+    targetWidth     : 480,
+    targetHeight    : 480,
+    encodingType    : navigator.camera.EncodingType.JPEG,
+    destinationType : navigator.camera.DestinationType.DATA_URL
+  });
+					</code></pre></div>
+				</section>
+
+
+				<!-- Talking to Einstein -->
+				<section><h1>Hello Einstein</h1></section>
+				<section><h1>This is London Calling</h1></section>
+				<section class="std"><h1 class="camel">This is London Calling</h1>
+					<div><pre><code class="Javascript" data-noescape>
+let oauth = McRestService.init();
+
+
+
+
+
+
+
+
+
+					</code></pre></div>
+				</section>
+				<section class="std"><h1 class="camel">This is London Calling</h1>
+					<div ><pre><code class="Javascript" data-noescape>
+let oauth = McRestService.init();</em>
+let url = oauth.instUrl + '/services/apexrest/SkinCondition/v5';
+let headers = { 'Content-Type': 'application/json',
+                Authorization:  "Bearer " + oauth.accessToken };
+
+
+
+
+
+
+					</code></pre></div>
+				</section>
+				<section class="std"><h1 class="camel">This is London Calling</h1>
+					<div><pre><code class="Javascript" data-noescape>
+let oauth = McRestService.init();
+let url = oauth.instUrl + '/services/apexrest/SkinCondition/v5';
+let headers = { 'Content-Type': 'application/json',
+                Authorization:  "Bearer " + oauth.accessToken};
+
+$http.post(url, JSON.stringify({'base64': b64}), {
+   headers: headers
+})
+.success(function(res){
+}
+					</code></pre></div>
+				</section>
+
+
+
+				<!-- Online Vid -->
+				<section class="std"><h1>Online Demo</h1>
+					<p>Demo Vid</p>
 				</section>
 
 
@@ -121,8 +293,13 @@
 					<ul>
 						<li class="fragment">Network &amp; platform resilient</li>
 						<li class="fragment">What about poor Einstein?</li>
-						<li class="fragment">DEMO</li>
 					</ul>
+				</section>
+
+
+				<!-- Offline Vid -->
+				<section class="std"><h1>Offline Demo</h1>
+					<p>Demo Vid</p>
 				</section>
 
 
@@ -188,6 +365,54 @@
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 				]
 			});
+
+
+			Reveal.addEventListener( 'slidechanged', function( event ) {
+		    var video;
+		    console.log("todd");
+		    switch (event.indexh) {
+		    	case 6:
+		    		vid = document.getElementById('einstein-model');
+		    		vid.load();
+		    		vid.play();
+		    		break;
+		    	case 10:
+		    		document.getElementById('einstein-platform-prediction').load();
+		    		break;
+		    	case 12:
+		    		document.getElementById('einstein-rest-class').load();
+		    		break;
+		    	// case 19:
+		    	// 	document.getElementById('snippet-1').load();
+		    	// 	break;
+		    	// case 21:
+		    	// 	document.getElementById('snippet-2').load();
+		    	// 	break;
+		    	// case 22:
+		    	// 	document.getElementById('snippet-3').load();
+		    	// 	break;
+		    	// case 25:
+		    	// 	document.getElementById('drag-drop').load();
+		    	// 	break;
+		    	// case 27:
+		    	// 	document.getElementById('device-toolbar').load();
+		    	// 	break;
+		    	// case 29:
+		    	// 	document.getElementById('dollar-zero').load();
+		    	// 	break;
+		    	// case 32:
+		    	// 	vid = document.getElementById('breakpoints');
+		    	// 	vid.load();
+		    	// 	vid.playbackRate = 1.2;
+		    	// 	break;
+		    	// case 34:
+		    	// 	vid = document.getElementById('console');
+		    	// 	vid.load();
+		    	// 	vid.playbackRate = 1.1;
+		    	// 	break;
+		    	default:
+		    	}
+			} );
 		</script>
 	</body>
 </html>
