@@ -26,7 +26,7 @@
 			<div class="slides">
 
 				<section class="tune">
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/AULOC--qUOI" frameborder="0" allowfullscreen></iframe>
+					<iframe width="840" height="472" src="https://www.youtube.com/embed/AULOC--qUOI" frameborder="0" allowfullscreen></iframe>
 					<p class="tagline">Kenny Rogers - I Just Dropped In (1972)</p>
 				</section>
 
@@ -66,8 +66,15 @@
 				<section class="std"><h1>Einstein - Access and DataSets</h1>
 					<ul>
 						<li>Create an account &amp; link to our dev org</li>
-						<li>Install the (excellent) Einstein Playgound (demo)</li>
-						<li>Create our dataset</li>
+						<li>Install René's (excellent) Einstein Playgound</li>
+					</ul>
+					<div><pre><code class="Bash" data-noescape>$ git clone https://github.com/muenzpraeger/salesforce-einstein-platform-apex
+$ sfdx force:auth:web:login -a DefaultOrg
+$ sfdx force:source:convert -r force-app -d mdapi
+$ sfdx force:mdapi:deploy -d mdapi -u DefaultOrg
+$ sfdx force:user:permset:assign -n Einstein_Platform_Playground -u DefaultOrg</code></pre></div>
+					<ul>
+						<li class="fragment">Create our dataset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 					</ul>
 				</section>
 				<section >
@@ -84,7 +91,7 @@
 					<p>&nbsp;</li>
 					</p>
 					<pre class="fragment"><code class="Bash" data-noescape>
-curl -X GET -H "Authorization: Bearer &lt;TOKEN>" \
+$ curl -X GET -H "Authorization: Bearer &lt;TOKEN>" \
   -H "Cache-Control: no-cache" \
   https://api.einstein.ai/v2/vision/train/&lt;MODEL>
 					</code></pre>
@@ -297,6 +304,21 @@ $http.post(url, JSON.stringify({'base64': b64}), {
 				</section>
 
 
+				<!-- Poor Einstein -->
+				<section class="std"><h1>Trigger Hippie</h1>
+					<ul>
+						<li class="fragment">Trigger (before insert, before update)<ul>
+							<li>If we have an image</li>
+							<li>If we don't have a condition</li>
+						</ul></li>
+						<li class="fragment">Future Callout<ul>
+							<li>Call Einstein with image from our base64 string</li>
+							<li>Update our contact</li>
+						</ul></li>
+					</ul>
+				</section>
+
+
 				<!-- Offline Vid -->
 				<section class="std"><h1>Offline Demo</h1>
 					<p>Demo Vid</p>
@@ -315,13 +337,14 @@ $http.post(url, JSON.stringify({'base64': b64}), {
 
 				<!-- References -->
 				<section class="references std"><h1>References (and thanks)</h1>
+					<p>&nbsp;</p>
 					<ul>
-						<li><a href="https://metamind.readme.io/docs/predictive-vision-service-api">Vision API Spec</a></li>
-						<li><a href="https://api.metamind.io/token">Einstein Token Generator</a></li>
-						<li><a href="https://trailhead.salesforce.com/trails/get_smart_einstein">Einstein Trailheads</a></li>
-						<li><a href="https://developer.salesforce.com/blogs/2017/09/using-einstein-platform-services-within-force-com.html">Using Einstein Platform Services - Salesforce Dev Blog</a></li>
-						<li><a href="https://github.com/muenzpraeger/salesforce-einstein-platform-apex">Einstein Playground - René Winkelmeyer</a></li>
-						<li><a href="https://mobilecaddy.net">MobileCaddy</a></li>
+						<li><a href="https://metamind.readme.io/docs/predictive-vision-service-api">Vision API Spec<br/><span class="url-text">(https://metamind.readme.io/docs/predictive-vision-service-api)</span></a></li>
+						<li><a href="https://api.metamind.io/token">Einstein Token Generator<br/><span class="url-text">(https://api.metamind.io/token)</span></a></li>
+						<li><a href="https://trailhead.salesforce.com/trails/get_smart_einstein">Einstein Trailheads<br/><span class="url-text">(https://trailhead.salesforce.com/trails/get_smart_einstein)</span></a></li>
+						<li><a href="https://developer.salesforce.com/blogs/2017/09/using-einstein-platform-services-within-force-com.html">Using Einstein Platform Services - Salesforce Dev Blog<br/><span class="url-text">(https://developer.salesforce.com/blogs/2017/09/using-einstein-platform-services-within-force-com.html)</span></a></li>
+						<li><a href="https://github.com/muenzpraeger/salesforce-einstein-platform-apex">Einstein Playground - René Winkelmeyer<br/><span class="url-text">(https://github.com/muenzpraeger/salesforce-einstein-platform-apex)</span></a></li>
+						<li><a href="https://mobilecaddy.net">MobileCaddy<br/><span class="url-text">(https://mobilecaddy.net)</span></a></li>
 					</ul>
 				</section>
 
