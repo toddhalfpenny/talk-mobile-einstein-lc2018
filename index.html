@@ -44,8 +44,23 @@
 				</section>
 
 
-				<!-- Intro -->
-				<section class="std"><h1>Kenny What Now?</h1>
+				<!-- Setting the scene -->
+				<section class="std wide"><h1>Kenny What Now?</h1>
+					<div class="img-left">
+						<img class='left' src="lib/img/lc2018/medical.jpg" />
+						<p><a href=" https://www.flickr.com/photos/neccorp/collections/72157645227827765/">Image: NEC Corporation of America</a></p>
+					</div>
+					<ul class='left'>
+						<li class="fragment">What condition is his condition in?</li>
+						<li class="fragment">Mobile App</li>
+						<li class="fragment">For Field staff</li>
+						<li class="fragment">Use Einstein</li>
+					</ul>
+				</section>
+
+
+				<!-- Agenda -->
+				<section class="std"><h1>What are we going to cover</h1>
 					<ul>
 						<li class="fragment">Einstein Vision API to classify skin conditions</li>
 						<li class="fragment">Integration code on Salesforce.com</li>
@@ -91,20 +106,20 @@ $ sfdx force:user:permset:assign -n Einstein_Platform_Playground -u DefaultOrg</
 					<p>&nbsp;</li>
 					</p>
 					<pre class="fragment"><code class="Bash" data-noescape>
-$ curl -X GET -H "Authorization: Bearer &lt;TOKEN>" \
-  -H "Cache-Control: no-cache" \
-  https://api.einstein.ai/v2/vision/train/&lt;MODEL>
+    $ curl -X GET -H "Authorization: Bearer &lt;TOKEN>" \
+        -H "Cache-Control: no-cache" \
+        https://api.einstein.ai/v2/vision/train/&lt;MODEL>
 					</code></pre>
-					<pre  class="fragment"><code class="JSON">{
-   ...
-  "status": "FAILED",
-  "progress": 0.01,
-  ...
-  "failureMsg": "To train a dataset and create
-                a model, the dataset must contain
-                atleast 40 examples.",
-  ...
-}</code></pre>
+					<pre  class="fragment"><code class="JSON">    {
+       ...
+      "status": "FAILED",
+       "progress": 0.01,
+      ...
+      "failureMsg": "To train a dataset and create
+                    a model, the dataset must contain
+                    atleast 40 examples.",
+      ...
+    }</code></pre>
 				</section>
 				<section class="std">
 					<h1>Gotchas</h1>
@@ -163,7 +178,7 @@ $ curl -X GET -H "Authorization: Bearer &lt;TOKEN>" \
 						<li class="fragment">MobileCaddy Starter Apps</li>
 					</ul>
 					<div class="fragment"><pre><code  class="Bash" data-noescape>
-:$ mobilecaddy new ionic-shell myApp
+    $ mobilecaddy new ionic-shell myApp
 					</code></pre></div>
 					<ul>
 						<li class="fragment">Encrypted Offline-first approach</li>
@@ -174,19 +189,19 @@ $ curl -X GET -H "Authorization: Bearer &lt;TOKEN>" \
 				<!-- Reading records -->
 				<section class="std"><h1>List our <em>Accounts</em> and <em>Contacts</em></h1>
 					<div class="fragment"><pre><code  class="Javascript" data-noescape>
-  devUtils.readRecords('Account__ap', [])
-    .then(function(result) {
-    ...
-  }
+     devUtils.readRecords('Account__ap', [])
+       .then(function(result) {
+       ...
+     }
 
-  // OR
+     // OR
 
-  let soql = "SELECT * from {Account__ap}
-              WHERE {Account__ap:Id} = '" + id + "'";
-  devUtils.smartSql(soql)
-    .then( function(result) {
-    ...
-  }
+     let soql = "SELECT * from {Account__ap}
+                 WHERE {Account__ap:Id} = '" + id + "'";
+     devUtils.smartSql(soql)
+       .then( function(result) {
+       ...
+     }
 					</code></pre></div>
 				</section>
 
@@ -246,7 +261,7 @@ $ curl -X GET -H "Authorization: Bearer &lt;TOKEN>" \
 				<section><h1>This is London Calling</h1></section>
 				<section class="std"><h1 class="camel">This is London Calling</h1>
 					<div><pre><code class="Javascript" data-noescape>
-let oauth = McRestService.init();
+  let oauth = McRestService.init();
 
 
 
@@ -260,10 +275,10 @@ let oauth = McRestService.init();
 				</section>
 				<section class="std"><h1 class="camel">This is London Calling</h1>
 					<div ><pre><code class="Javascript" data-noescape>
-let oauth = McRestService.init();</em>
-let url = oauth.instUrl + '/services/apexrest/SkinCondition/v5';
-let headers = { 'Content-Type': 'application/json',
-                Authorization:  "Bearer " + oauth.accessToken };
+  let oauth = McRestService.init();</em>
+  let url = oauth.instUrl + '/services/apexrest/SkinCondition/v5';
+  let headers = { 'Content-Type': 'application/json',
+                  Authorization:  "Bearer " + oauth.accessToken };
 
 
 
@@ -274,16 +289,16 @@ let headers = { 'Content-Type': 'application/json',
 				</section>
 				<section class="std"><h1 class="camel">This is London Calling</h1>
 					<div><pre><code class="Javascript" data-noescape>
-let oauth = McRestService.init();
-let url = oauth.instUrl + '/services/apexrest/SkinCondition/v5';
-let headers = { 'Content-Type': 'application/json',
-                Authorization:  "Bearer " + oauth.accessToken};
+  let oauth = McRestService.init();
+  let url = oauth.instUrl + '/services/apexrest/SkinCondition/v5';
+  let headers = { 'Content-Type': 'application/json',
+                  Authorization:  "Bearer " + oauth.accessToken};
 
-$http.post(url, JSON.stringify({'base64': b64}), {
-   headers: headers
-})
-.success(function(res){
-}
+  $http.post(url, JSON.stringify({'base64': b64}), {
+     headers: headers
+  })
+  .success(function(res){
+  }
 					</code></pre></div>
 				</section>
 
